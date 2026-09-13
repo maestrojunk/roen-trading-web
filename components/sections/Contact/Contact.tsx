@@ -32,13 +32,25 @@ export const Contact: React.FC = () => {
       });
     }
 
+    const categoryObj = CONTACT_DATA.inquiryCategories.find(
+      (c) => c.id === selectedCategory
+    );
+    const categoryLabel = categoryObj ? t(categoryObj.label) : selectedCategory;
+
     const mailSubject = encodeURIComponent(
-      `[ROEN TRADING Inquiry] ${selectedCategory.toUpperCase()}`
+      `[ROEN TRADING B2B 문의] ${categoryLabel}`
     );
     const mailBody = encodeURIComponent(
-      `Sender: ${formEmail}\nCategory: ${selectedCategory}\n\nMessage:\n${formMessage}`
+      `[ROEN TRADING B2B 공식 문의 접수]\n\n` +
+        `• 문의 유형: ${categoryLabel}\n` +
+        `• 회신 이메일: ${formEmail}\n\n` +
+        `• 상세 문의 내용:\n${formMessage}\n\n` +
+        `----------------------------------------\n` +
+        `본 메일은 ROEN TRADING 공식 기업 홈페이지에서 발송되었습니다.`
     );
-    window.location.href = `mailto:${CONTACT_DATA.emailPlaceholder}?subject=${mailSubject}&body=${mailBody}`;
+
+    // Direct mail transmission to jayden@roentrading.com
+    window.location.href = `mailto:${CONTACT_DATA.email}?subject=${mailSubject}&body=${mailBody}`;
 
     setIsSubmitting(false);
     setFormSubmitted(true);
@@ -56,7 +68,7 @@ export const Contact: React.FC = () => {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          {/* Left Column: Corporate Information & Details (Adhering to Rule 36 Placeholder Standards) */}
+          {/* Left Column: Corporate Information & Details */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -83,15 +95,14 @@ export const Contact: React.FC = () => {
                 <Mail size={18} className="text-[#c5a880] mt-0.5 shrink-0" />
                 <div className="flex-1">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 block">
-                    Email Inquiry
+                    Official Email
                   </span>
                   <a
-                    href={`mailto:${CONTACT_DATA.emailPlaceholder}`}
-                    className="text-white hover:text-[#c5a880] transition-colors font-mono text-xs sm:text-sm"
+                    href={`mailto:${CONTACT_DATA.email}`}
+                    className="text-white hover:text-[#c5a880] transition-colors font-mono text-xs sm:text-sm font-medium"
                   >
-                    {CONTACT_DATA.emailPlaceholder}
+                    {CONTACT_DATA.email}
                   </a>
-                  <span className="ml-2 text-[9px] font-mono text-zinc-600">(TODO: Actual Email)</span>
                 </div>
               </div>
 
@@ -100,26 +111,14 @@ export const Contact: React.FC = () => {
                 <Phone size={18} className="text-[#c5a880] mt-0.5 shrink-0" />
                 <div className="flex-1">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 block">
-                    Phone Contact
+                    Direct Contact
                   </span>
-                  <span className="text-white font-mono text-xs sm:text-sm">
-                    {CONTACT_DATA.phonePlaceholder}
-                  </span>
-                  <span className="ml-2 text-[9px] font-mono text-zinc-600">(TODO: Actual Phone)</span>
-                </div>
-              </div>
-
-              {/* Address */}
-              <div className="flex items-start gap-4 p-4 rounded-sm border border-white/5 bg-white/[0.02]">
-                <MapPin size={18} className="text-[#c5a880] mt-0.5 shrink-0" />
-                <div className="flex-1">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 block">
-                    Headquarters
-                  </span>
-                  <p className="text-zinc-300 text-xs sm:text-sm">
-                    {t(CONTACT_DATA.addressPlaceholder)}
-                  </p>
-                  <span className="text-[9px] font-mono text-zinc-600">(TODO: Actual Address)</span>
+                  <a
+                    href={`tel:${CONTACT_DATA.phone}`}
+                    className="text-white hover:text-[#c5a880] transition-colors font-mono text-xs sm:text-sm font-medium"
+                  >
+                    {CONTACT_DATA.phone}
+                  </a>
                 </div>
               </div>
 
@@ -128,12 +127,11 @@ export const Contact: React.FC = () => {
                 <Building size={18} className="text-[#c5a880] mt-0.5 shrink-0" />
                 <div className="flex-1">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 block">
-                    Business Registration
+                    사업자등록번호 (Business License)
                   </span>
-                  <span className="text-zinc-400 font-mono text-xs">
-                    {CONTACT_DATA.bizRegNumberPlaceholder}
+                  <span className="text-white font-mono text-xs sm:text-sm font-medium">
+                    {CONTACT_DATA.bizRegNumber}
                   </span>
-                  <span className="ml-2 text-[9px] font-mono text-zinc-600">(TODO: Actual Biz Number)</span>
                 </div>
               </div>
             </div>

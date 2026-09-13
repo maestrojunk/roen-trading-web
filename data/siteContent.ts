@@ -126,22 +126,22 @@ export const CONTACT_DATA: ContactContent = {
     ko: '새로운 비즈니스 기회와 신뢰할 수 있는 글로벌 파트너십을 위해 언제든 연락주세요.',
     en: 'Connect with us to explore new business horizons and establish dependable global trade partnerships.',
   },
-  companyName: 'ROEN TRADING',
+  companyName: '로엔 트레이딩 (ROEN TRADING)',
   founderRole: {
     ko: '대표자 / Founder & CEO',
     en: 'Founder & CEO',
   },
   founderName: {
-    ko: 'Jayden Kim',
+    ko: 'Jayden Kim (김준현)',
     en: 'Jayden Kim',
   },
-  emailPlaceholder: 'contact@roentrading.com', // Placeholder
-  phonePlaceholder: '+82 (0)2-0000-0000', // Placeholder
-  addressPlaceholder: {
-    ko: '서울특별시 (세부 주소 업데이트 예정)',
-    en: 'Seoul, Republic of Korea (Detailed address to be updated)',
+  email: 'jayden@roentrading.com',
+  phone: '010-8199-0625',
+  bizRegNumber: '156-76-00593',
+  address: {
+    ko: '대한민국',
+    en: 'Republic of Korea',
   },
-  bizRegNumberPlaceholder: '000-00-00000', // Placeholder
   inquiryCategories: [
     { id: 'wholesale', label: { ko: '도매 및 유통 공급 문의', en: 'Wholesale & Distribution' } },
     { id: 'sourcing', label: { ko: '글로벌 소싱 및 수입 문의', en: 'Global Sourcing & Import' } },

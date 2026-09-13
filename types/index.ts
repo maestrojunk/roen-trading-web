@@ -93,10 +93,10 @@ export interface ContactContent {
   companyName: string;
   founderRole: LocalizedString;
   founderName: LocalizedString;
-  emailPlaceholder: string;
-  phonePlaceholder: string;
-  addressPlaceholder: LocalizedString;
-  bizRegNumberPlaceholder: string;
+  email: string;
+  phone: string;
+  bizRegNumber: string;
+  address?: LocalizedString;
   inquiryCategories: {
     id: string;
     label: LocalizedString;
