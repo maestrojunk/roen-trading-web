@@ -24,33 +24,25 @@ export const Contact: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    if (isSupabaseConfigured) {
-      await submitInquiry({
-        category: selectedCategory,
-        email: formEmail,
-        message: formMessage,
-      });
-    }
-
     const categoryObj = CONTACT_DATA.inquiryCategories.find(
       (c) => c.id === selectedCategory
     );
     const categoryLabel = categoryObj ? t(categoryObj.label) : selectedCategory;
 
-    const mailSubject = encodeURIComponent(
-      `[ROEN TRADING B2B 문의] ${categoryLabel}`
-    );
-    const mailBody = encodeURIComponent(
-      `[ROEN TRADING B2B 공식 문의 접수]\n\n` +
-        `• 문의 유형: ${categoryLabel}\n` +
-        `• 회신 이메일: ${formEmail}\n\n` +
-        `• 상세 문의 내용:\n${formMessage}\n\n` +
-        `----------------------------------------\n` +
-        `본 메일은 ROEN TRADING 공식 기업 홈페이지에서 발송되었습니다.`
-    );
-
-    // Direct mail transmission to jayden@roentrading.com
-    window.location.href = `mailto:${CONTACT_DATA.email}?subject=${mailSubject}&body=${mailBody}`;
+    // Server-Side Automated Email Delivery via Resend & Supabase
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          category: categoryLabel,
+          email: formEmail,
+          message: formMessage,
+        }),
+      });
+    } catch (err) {
+      console.error('Contact transmission error:', err);
+    }
 
     setIsSubmitting(false);
     setFormSubmitted(true);
