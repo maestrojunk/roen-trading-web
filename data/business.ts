@@ -1,6 +1,10 @@
 import { BusinessItemType } from '@/types';
 
-export const BUSINESS_ITEMS: BusinessItemType[] = [
+export interface BusinessItemExtended extends BusinessItemType {
+  imageSrc: string;
+}
+
+export const BUSINESS_ITEMS: BusinessItemExtended[] = [
   {
     id: 'global-sourcing',
     index: '01',
@@ -21,6 +25,7 @@ export const BUSINESS_ITEMS: BusinessItemType[] = [
       { ko: '신뢰도 높은 해외 공장 및 제조 파트너십', en: 'Verified overseas manufacturing partnerships' },
       { ko: '트렌드에 기민하게 반응하는 패션 라인업 확보', en: 'Trend-responsive fashion product line curation' },
     ],
+    imageSrc: '/images/business/sourcing_inspection.jpg',
     imagePlaceholder: {
       category: 'Raw Materials & Textile Inspection',
       aspectRatio: '4/3',
@@ -50,6 +55,7 @@ export const BUSINESS_ITEMS: BusinessItemType[] = [
       { ko: '규정 준수 및 국제 무역 계약 체계 관리', en: 'Regulatory compliance & cross-border contract governance' },
       { ko: '운송 리스크 관리 및 안전한 공급망 운영', en: 'Freight risk mitigation & secure supply chain operations' },
     ],
+    imageSrc: '/images/business/trading_logistics.jpg',
     imagePlaceholder: {
       category: 'Cross-Border Logistics & Global Cargo',
       aspectRatio: '4/3',
@@ -79,6 +85,7 @@ export const BUSINESS_ITEMS: BusinessItemType[] = [
       { ko: '체계적인 창고 입출고 및 재고 운영 체계', en: 'Systematic warehousing and inventory management' },
       { ko: '온·오프라인 편집숍 및 유통망 공급 레퍼런스', en: 'Supplying to select shops, boutiques, and multi-channel retailers' },
     ],
+    imageSrc: '/images/business/wholesale_dist.jpg',
     imagePlaceholder: {
       category: 'Modern Warehousing & Distribution Hub',
       aspectRatio: '4/3',
@@ -108,6 +115,7 @@ export const BUSINESS_ITEMS: BusinessItemType[] = [
       { ko: '신규 제품군 공동 기획 및 유연한 소싱 협력', en: 'Joint product category planning and agile sourcing collaboration' },
       { ko: '지속 가능한 상생 비즈니스 모델 지향', en: 'Dedicated to long-term mutual growth and shared success' },
     ],
+    imageSrc: '/images/business/partnership_meeting.jpg',
     imagePlaceholder: {
       category: 'Strategic Alliance & Executive Discussion',
       aspectRatio: '4/3',

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { BusinessItem } from './BusinessItem';
@@ -69,45 +70,45 @@ export const Business: React.FC = () => {
 
           {/* Right Column: Sticky Visual Canvas */}
           <div className="lg:col-span-6 hidden lg:block sticky top-32">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-white/10 bg-[#121318]">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-white/10 bg-[#121318] shadow-2xl shadow-black/80">
               {/* Visual Card with Crossfade Transition */}
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeItem.id}
-                  initial={{ opacity: 0, scale: 0.98 }}
+                  initial={{ opacity: 0, scale: 1.03 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 1.02 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute inset-0 flex flex-col justify-between p-8 bg-gradient-to-br from-[#181920] via-[#111216] to-[#0a0a0c]"
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute inset-0"
                 >
-                  {/* Subtle Grid overlay */}
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-40 pointer-events-none" />
+                  <Image
+                    src={activeItem.imageSrc}
+                    alt={t(activeItem.title)}
+                    fill
+                    sizes="(max-width: 1200px) 100vw, 50vw"
+                    className="object-cover object-center"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-black/30 to-black/50 pointer-events-none" />
 
                   {/* Header Badge */}
-                  <div className="relative z-10 flex items-center justify-between">
-                    <span className="text-[11px] font-mono tracking-widest text-[#c5a880] uppercase">
+                  <div className="absolute top-6 left-6 right-6 z-10 flex items-center justify-between">
+                    <span className="text-[10px] font-mono tracking-widest text-white bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/15 uppercase">
                       PILLAR {activeItem.index} / 04
                     </span>
-                    <span className="text-xs font-mono text-zinc-400">ROEN SPECIFICATION</span>
+                    <span className="text-xs font-mono text-[#c5a880] font-medium bg-black/50 px-2 py-0.5 rounded">
+                      VERIFIED B2B
+                    </span>
                   </div>
 
-                  {/* Center Content */}
-                  <div className="relative z-10 my-auto text-center py-8">
-                    <div className="inline-block mb-3 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.04] text-xs font-mono text-zinc-300 tracking-wider">
-                      TODO: {activeItem.imagePlaceholder.category}
-                    </div>
-                    <h4 className="text-2xl font-light text-white tracking-tight mt-2">
+                  {/* Center/Bottom Overlay Details */}
+                  <div className="absolute bottom-6 left-6 right-6 z-10">
+                    <span className="text-[11px] font-mono tracking-widest text-[#c5a880] uppercase block mb-1">
+                      {t(activeItem.subtitle)}
+                    </span>
+                    <h4 className="text-xl sm:text-2xl font-light text-white tracking-tight">
                       {t(activeItem.title)}
                     </h4>
-                    <p className="text-xs text-zinc-400 max-w-sm mx-auto mt-2 font-light">
-                      {t(activeItem.imagePlaceholder.alt)}
-                    </p>
-                  </div>
-
-                  {/* Footer Stats */}
-                  <div className="relative z-10 flex items-center justify-between border-t border-white/5 pt-4 text-[10px] font-mono text-zinc-400">
-                    <span>INTERNATIONAL TRADE LOGISTICS</span>
-                    <span className="text-zinc-400 font-medium">B2B VERIFIED</span>
                   </div>
                 </motion.div>
               </AnimatePresence>

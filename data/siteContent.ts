@@ -9,6 +9,7 @@ import {
 
 export const NAV_ITEMS: NavItem[] = [
   { id: 'about', label: { ko: '소개', en: 'About' }, href: '#about' },
+  { id: 'cashmere-story', label: { ko: '캐시미어', en: 'Cashmere' }, href: '#cashmere-story' },
   { id: 'business', label: { ko: '사업 영역', en: 'Business' }, href: '#business' },
   { id: 'numbers', label: { ko: '실적', en: 'Numbers' }, href: '#numbers' },
   { id: 'categories', label: { ko: '카테고리', en: 'Categories' }, href: '#categories' },

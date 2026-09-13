@@ -12,7 +12,7 @@ export function useScrollAnimation(threshold = 50) {
       setIsScrolled(scrollY > threshold);
 
       // Active section spy
-      const sections = ['about', 'business', 'numbers', 'categories', 'process', 'founder', 'contact'];
+      const sections = ['about', 'cashmere-story', 'business', 'numbers', 'categories', 'process', 'founder', 'contact'];
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
         if (el) {

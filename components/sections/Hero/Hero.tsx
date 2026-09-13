@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import Image from 'next/image';
 import { HERO_DATA } from '@/data/siteContent';
 import { useLanguage } from '@/hooks/useLanguage';
 import { ChevronDown } from 'lucide-react';
@@ -15,11 +16,11 @@ export const Hero: React.FC = () => {
     offset: ['start start', 'end start'],
   });
 
-  // Refined Apple-style scroll-driven transform
+  // Apple-inspired scroll-driven transforms
   const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
-  const textY = useTransform(scrollYProgress, [0, 0.65], [0, -40]);
-  const indicatorOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
+  const textY = useTransform(scrollYProgress, [0, 0.65], [0, -50]);
+  const indicatorOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
   return (
     <section
@@ -27,22 +28,23 @@ export const Hero: React.FC = () => {
       id="hero"
       className="relative flex h-screen min-h-[700px] w-full items-center justify-center overflow-hidden bg-[#070709]"
     >
-      {/* Background Visual Layer with Subtle Parallax Scale */}
+      {/* Background Visual Layer: Cinematic White Cashmere Macro with Parallax Zoom */}
       <motion.div
         style={{ scale: bgScale }}
         className="absolute inset-0 z-0 h-full w-full will-change-transform"
       >
-        {/* Editorial Architectural & Textile Texture Canvas */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0e0f14]/80 via-[#070709]/75 to-[#070709] z-10" />
+        <Image
+          src="/images/hero/hero_cashmere.jpg"
+          alt="ROEN TRADING White Cashmere Macro Textile"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center brightness-[0.45] contrast-[1.05]"
+        />
 
-        {/* Ambient Lighting & High-End Minimalist Mesh */}
-        <div className="absolute inset-0 opacity-25 mix-blend-screen bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(197,168,128,0.22),transparent_70%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
-
-        {/* TODO: Background Video / Image Holder */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
-          <div className="w-full h-full bg-[radial-gradient(circle_at_center,#181a24_0%,transparent_70%)]" />
-        </div>
+        {/* Ambient Dark Gradient Vignette for Premium Apple-Style Readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-transparent to-[#0a0a0c]/80" />
+        <div className="absolute inset-0 bg-radial from-transparent via-[#0a0a0c]/40 to-[#0a0a0c]/90" />
       </motion.div>
 
       {/* Main Content Area */}
@@ -55,7 +57,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-3 mb-6 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.02] backdrop-blur-md"
+          className="inline-flex items-center gap-3 mb-6 px-4 py-1.5 rounded-full border border-white/15 bg-black/40 backdrop-blur-md"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-[#c5a880] animate-pulse" />
           <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-zinc-300">
@@ -88,7 +90,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-4 max-w-xl text-sm sm:text-base text-zinc-400 font-light leading-relaxed tracking-wide"
+          className="mt-4 max-w-xl text-sm sm:text-base text-zinc-300 font-light leading-relaxed tracking-wide"
         >
           {t(HERO_DATA.subTagline)}
         </motion.p>
@@ -102,7 +104,7 @@ export const Hero: React.FC = () => {
         >
           <a
             href="#contact"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-white/20 bg-white/5 px-8 py-3.5 text-xs font-medium uppercase tracking-[0.2em] text-white backdrop-blur-md transition-all duration-300 hover:bg-white hover:text-black hover:border-white"
+            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-white/25 bg-white/10 px-8 py-3.5 text-xs font-medium uppercase tracking-[0.2em] text-white backdrop-blur-md transition-all duration-300 hover:bg-white hover:text-black hover:border-white shadow-xl shadow-black/40"
           >
             <span>{t(HERO_DATA.ctaText)}</span>
             <span className="text-sm transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -113,7 +115,7 @@ export const Hero: React.FC = () => {
       {/* Bottom Scroll Indicator */}
       <motion.div
         style={{ opacity: indicatorOpacity }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 select-none"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 select-none pointer-events-none"
       >
         <span className="text-[10px] font-mono tracking-[0.25em] text-zinc-400 uppercase">
           {t(HERO_DATA.scrollPrompt)}

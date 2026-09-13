@@ -1,6 +1,7 @@
 import { Header } from '@/components/layout/Header';
 import { Hero } from '@/components/sections/Hero/Hero';
 import { About } from '@/components/sections/About/About';
+import { CashmereStory } from '@/components/sections/Story/CashmereStory';
 import { Business } from '@/components/sections/Business/Business';
 import { Numbers } from '@/components/sections/Numbers/Numbers';
 import { Categories } from '@/components/sections/Categories/Categories';
@@ -21,25 +22,28 @@ export default function HomePage() {
       {/* 03 ABOUT ROEN */}
       <About />
 
-      {/* 04 WHAT WE DO */}
+      {/* 04 SPECIAL HIGHLIGHT: WHITE CASHMERE STORY */}
+      <CashmereStory />
+
+      {/* 05 WHAT WE DO */}
       <Business />
 
-      {/* 05 NUMBERS */}
+      {/* 06 NUMBERS */}
       <Numbers />
 
-      {/* 06 PRODUCT CATEGORIES */}
+      {/* 07 PRODUCT CATEGORIES */}
       <Categories />
 
-      {/* 07 OUR PROCESS */}
+      {/* 08 OUR PROCESS */}
       <Process />
 
-      {/* 08 FOUNDER */}
+      {/* 09 FOUNDER */}
       <Founder />
 
-      {/* 09 CONTACT */}
+      {/* 10 CONTACT */}
       <Contact />
 
-      {/* 10 FOOTER */}
+      {/* 11 FOOTER */}
       <Footer />
     </main>
   );

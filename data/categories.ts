@@ -1,6 +1,10 @@
 import { CategoryItemType } from '@/types';
 
-export const CATEGORIES_DATA: CategoryItemType[] = [
+export interface CategoryItemExtended extends CategoryItemType {
+  imageSrc: string;
+}
+
+export const CATEGORIES_DATA: CategoryItemExtended[] = [
   {
     id: 'apparel',
     title: 'APPAREL',
@@ -17,6 +21,7 @@ export const CATEGORIES_DATA: CategoryItemType[] = [
       { ko: '팬츠 & 슬랙스', en: 'Trousers & Slacks' },
       { ko: '테일러링', en: 'Tailoring' },
     ],
+    imageSrc: '/images/categories/category_apparel.jpg',
     imagePlaceholder: {
       label: 'Minimalist Contemporary Apparel Rack',
       tone: 'deep-slate',
@@ -38,6 +43,7 @@ export const CATEGORIES_DATA: CategoryItemType[] = [
       { ko: '가디건 & 풀오버', en: 'Cardigans & Pullovers' },
       { ko: '시즌 니트웨어', en: 'Seasonal Knits' },
     ],
+    imageSrc: '/images/categories/category_knitwear.jpg',
     imagePlaceholder: {
       label: 'Textured Fine Knitwear Detail',
       tone: 'warm-neutral',
@@ -59,6 +65,7 @@ export const CATEGORIES_DATA: CategoryItemType[] = [
       { ko: '캐주얼 재킷', en: 'Casual Jackets' },
       { ko: '다운 & 패딩', en: 'Insulated Outerwear' },
     ],
+    imageSrc: '/images/categories/category_outerwear.jpg',
     imagePlaceholder: {
       label: 'Structured Tailored Outerwear Silhouette',
       tone: 'charcoal',
@@ -80,6 +87,7 @@ export const CATEGORIES_DATA: CategoryItemType[] = [
       { ko: '가방 & 파우치', en: 'Bags & Pouches' },
       { ko: '시즌 악세서리', en: 'Seasonal Accessories' },
     ],
+    imageSrc: '/images/categories/category_fashion_goods.jpg',
     imagePlaceholder: {
       label: 'Artisanal Leather Goods Still Life',
       tone: 'espresso',
@@ -101,6 +109,7 @@ export const CATEGORIES_DATA: CategoryItemType[] = [
       { ko: '인테리어 오브제', en: 'Interior Objects' },
       { ko: '라이프 굿즈', en: 'Daily Essentials' },
     ],
+    imageSrc: '/images/categories/category_lifestyle.jpg',
     imagePlaceholder: {
       label: 'Modern Minimalist Lifestyle Space',
       tone: 'stone-gray',
